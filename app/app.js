@@ -1,29 +1,51 @@
 /* lista użytkowników losowanych, np. do pełnienia dyżuru w niedzielę;
 z możliwością dopisania użytkownika i losowania ponownego z udziałem tego dodanego */
+const Header = () => {
+    return (
+        <header>
+            <h1>Lista użytkowników</h1>
+            <h4>Popularność naszego oprogramowania rośnie</h4>
+            <p>Poniżej można zobaczyć listę użytkowników, a także dodać kolejnych i zobaczyć uaktualnioną listę (zawsz w kolejności alfabetycznej)</p>
+        </header>
+    )
+}
 
-class Draw extends React.Component {
+const Footer = () => {
+    return (
+        <footer>
+            <p>Wykonał <a href="mailto:mpreus@onet.eu">Maciej Preus</a></p>
+        </footer>
+    )
+}
 
+class UsersList extends React.Component {
     state = {
-        softwareUsers: ["Adam", "Barbara", "Czarek", "Darek", "Ewa", "Franek", "Grażyna", "Henryk", "Irek", "Janina", "Karol", "Lidia", "Marek", "Norbert"],
+        softwareUsers: ["Adam", "Barbara", "Czarek", "Darek", "Ewa", "Franek", "Grażyna", "Henryk", "Irek", "Janina", "Karol", "Lidia", "Marek", "Norbert", "Olga", "Paweł", "Roman", "Sabina", "Tadeusz", "Ula", "Waldek", "Zenon"],
         user: null,
         value: ""
     }
     
     handleShowList = () => {
         let listElements = document.getElementsByTagName("li");
+        let hideButton = document.querySelector("button.hideButton")
         for (let i = 0; i < listElements.length; i++) {
             if (listElements[i].classList.contains("invisible")) {
                 listElements[i].classList.remove("invisible")
                 listElements[i].classList.add("visible")
+                hideButton.classList.remove("invisible")
+                hideButton.classList.add("visible")
             }
         }
     }
     handleHideList = () => {
         let listElements = document.getElementsByTagName("li");
+        let hideButton = document.querySelector("button.hideButton")
         for (let i = 0; i < listElements.length; i++) {
             if (listElements[i].classList.contains("visible")) {
                 listElements[i].classList.remove("visible")
                 listElements[i].classList.add("invisible")
+                hideButton.classList.remove("visible")
+                hideButton.classList.add("invisible")
             }
         }
     }
@@ -64,13 +86,17 @@ const softwareUsers = this.state.softwareUsers.concat(this.state.value);
 
     render() {
         return (
-            <div>
+            <div className="userList">
                 <button onClick={this.handleShowList}>Zobacz wszystkich użytkowników</button>
-                <ul>{this.state.softwareUsers.map( u => <li className="invisible" key={u}>{u}</li>)}</ul>
-                <button onClick={this.handleHideList}>Schowaj listę użytkowników</button>
+                <ul>{this.state.softwareUsers.sort().map( u => <li className="invisible" key={u}>{u}</li>)}</ul>
+                <button className="hideButton invisible" onClick={this.handleHideList}>Schowaj listę użytkowników</button>
                 <br/>
+                <h3>Poniżej można zobaczyć dowolnego losowego użytkownika</h3>
+                <p>(tak losujemy zwycięzców naszej loterii)</p>
                 <button onClick={this.handleShowUser}>Zobacz losowego użytkownika</button>
                 <br/>
+                <h3>Poniżej można dodać użytkownika</h3>
+                <p>Wpisanie imienia i kliknięcie przycisku dodaje osobę do listy (sprawdź potem klikając przycisk 'Zobacz wszystkich użytkowników')</p>
                 <input type="text" value={this.state.value} onChange={this.handleInputChange} />
                 <button onClick={this.handleAddUser}>Dodaj użytkownika</button>
                 {this.state.user ? <h4>{this.state.user}</h4> : null}
@@ -79,7 +105,17 @@ const softwareUsers = this.state.softwareUsers.concat(this.state.value);
     }
 }
 
+const App = () => {
+    return (
+        <React.Fragment>
+            <Header />
+            <UsersList />
+            <Footer />
+        </React.Fragment>
+    )
+}
+
 ReactDOM.render(
-    <Draw />, 
+    <App />, 
     document.getElementById('root')
 )
