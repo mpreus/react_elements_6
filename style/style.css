@@ -3,8 +3,18 @@ body {
 	background-repeat: no-repeat;
 	color: #261d12;
 	font-family: Verdana, sans-serif;
+	text-align: center;
 }
 
+header, footer, div.userList {
+	border: 1px solid #261d12;
+	border-radius: 6px;
+	padding: 20px 10px;
+}
+
+div.userList {
+	margin-top: 60px;
+}
 div.backgroundImage {
 	background-image: url("../img/backgroundImage.jpg");
 	background-size: cover;
@@ -13,10 +23,11 @@ div.backgroundImage {
 }
 
 div.backgroundImage:hover {
-	opacity: .7;
+	opacity: .8;
 }
 
 h1 {
+	font-size: 30px;
 	margin-bottom: 0;
 	text-transform: uppercase;
 }
@@ -28,6 +39,10 @@ p.subtitle {
 
 h3 {
 	margin-top: 40px;
+}
+
+h4 {
+	margin-bottom: 0;
 }
 
 input {
@@ -45,16 +60,25 @@ button {
 	background: linear-gradient(180deg, #fcff9e 0%, #db9f44 100%);
 	border: 1px solid #46341c;
 	border-radius: 4px;
-	box-shadow: 3px 3px 3px #261d12;
 	font-family: Verdana, sans-serif;
 	font-size: 14px;
 	padding: 6px;
-	transition-duration: .8s;
+	transition-duration: .7s;
 	width: 240px;
 }
 button:hover {
 	background: #fcff9e;
+	box-shadow: 3px 3px 3px #261d12;
 	color: #000;
+}
+button.hideButton {
+	margin: 0 auto;
+}
+
+a {
+	color: #261d12;
+	font-weight: bold;
+	text-decoration: none;
 }
 
 .visible {

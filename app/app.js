@@ -16,8 +16,11 @@ const Header = () => {
 const Footer = () => {
     return (
         <footer>
-            <h4>Zainteresowanych prosimy o kontakt</h4>
-            <p>Wykonał <a href="mailto:mpreus@onet.eu">Maciej Preus</a></p>
+            <h3>Zainteresowanych prosimy o kontakt:</h3>
+            <p>Business relations: <a href="mailto:akaw@onet.eu">Kontakt</a></p>
+            <span>99-999 Głębokie</span><br/>
+            <span>ul. Studzienna 99</span>
+            <p>Wykonał: <a href="mailto:mpreus@onet.eu">Maciej Preus</a></p>
         </footer>
     )
 }
