@@ -4,8 +4,11 @@ const Header = () => {
     return (
         <header>
             <h1>Lista użytkowników</h1>
-            <h4>Popularność naszego oprogramowania rośnie</h4>
-            <p>Poniżej można zobaczyć listę użytkowników, a także dodać kolejnych i zobaczyć uaktualnioną listę (zawsz w kolejności alfabetycznej)</p>
+            <p className="subtitle">Popularność naszego oprogramowania rośnie</p>
+            <div className="backgroundImage">
+                
+            </div>
+            <p>Poniżej można zobaczyć listę użytkowników, a także dodać kolejnych i zobaczyć uaktualnioną listę (zawsze w kolejności alfabetycznej)</p>
         </header>
     )
 }
@@ -13,6 +16,7 @@ const Header = () => {
 const Footer = () => {
     return (
         <footer>
+            <h4>Zainteresowanych prosimy o kontakt</h4>
             <p>Wykonał <a href="mailto:mpreus@onet.eu">Maciej Preus</a></p>
         </footer>
     )
@@ -87,19 +91,19 @@ const softwareUsers = this.state.softwareUsers.concat(this.state.value);
     render() {
         return (
             <div className="userList">
-                <button onClick={this.handleShowList}>Zobacz wszystkich użytkowników</button>
+                <button onClick={this.handleShowList}>Wszyscy użytkownicy</button>
                 <ul>{this.state.softwareUsers.sort().map( u => <li className="invisible" key={u}>{u}</li>)}</ul>
                 <button className="hideButton invisible" onClick={this.handleHideList}>Schowaj listę użytkowników</button>
                 <br/>
                 <h3>Poniżej można zobaczyć dowolnego losowego użytkownika</h3>
                 <p>(tak losujemy zwycięzców naszej loterii)</p>
                 <button onClick={this.handleShowUser}>Zobacz losowego użytkownika</button>
+                {this.state.user ? <h4>{this.state.user}</h4> : null}
                 <br/>
                 <h3>Poniżej można dodać użytkownika</h3>
                 <p>Wpisanie imienia i kliknięcie przycisku dodaje osobę do listy (sprawdź potem klikając przycisk 'Zobacz wszystkich użytkowników')</p>
                 <input type="text" value={this.state.value} onChange={this.handleInputChange} />
                 <button onClick={this.handleAddUser}>Dodaj użytkownika</button>
-                {this.state.user ? <h4>{this.state.user}</h4> : null}
             </div>
         )
     }
