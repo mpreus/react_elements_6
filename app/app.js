@@ -104,7 +104,7 @@ const softwareUsers = this.state.softwareUsers.concat(this.state.value);
                 {this.state.user ? <h4>{this.state.user}</h4> : null}
                 <br/>
                 <h3>Poniżej można dodać użytkownika</h3>
-                <p>Wpisanie imienia i kliknięcie przycisku dodaje osobę do listy (sprawdź potem klikając przycisk 'Zobacz wszystkich użytkowników')</p>
+                <p>Wpisanie imienia i kliknięcie przycisku dodaje osobę do listy (sprawdź potem klikając przycisk 'Wszyscy użytkownicy')</p>
                 <input type="text" value={this.state.value} onChange={this.handleInputChange} />
                 <button onClick={this.handleAddUser}>Dodaj użytkownika</button>
             </div>
